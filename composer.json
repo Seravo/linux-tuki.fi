@@ -61,12 +61,16 @@
     "wpackagist-plugin/auto-post-thumbnail": "*",
     "wpackagist-plugin/google-analytics-dashboard-for-wp": "*",
     "wpackagist-plugin/polylang": "~2",
-    "wpackagist-plugin/autodescription": "~2"
+    "wpackagist-plugin/autodescription": "~2",
+    "wpackagist-plugin/cmb2": "~2",
+    "wpackagist-plugin/regenerate-thumbnails": "~2"
   },
   "extra": {
     "installer-paths": {
       "htdocs/wp-content/plugins/{$name}/": ["type:wordpress-plugin"],
-      "htdocs/wp-content/mu-plugins/{$name}/": ["type:wordpress-muplugin"],
+      "htdocs/wp-content/mu-plugins/{$name}/": [
+        "type:wordpress-muplugin"
+      ],
       "htdocs/wp-content/themes/{$name}": ["type:wordpress-theme"]
     },
     "dropin-paths": {

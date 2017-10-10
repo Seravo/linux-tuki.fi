@@ -150,22 +150,6 @@ class Settings {
 			]
 		];
 
-		$this->option_metabox[] = [
-			'id'         => 'linux_tuki_advanced_options',
-			'title'      => __( 'Advanced Settings', TEXT_DOMAIN ),
-			'show_on'    => [ 'key' => 'options-page', 'value' => [ 'advanced_options' ], ],
-			'show_names' => true,
-			'fields'     => [
-				[
-					'name'    => __( 'Some code-area', TEXT_DOMAIN ),
-					'desc'    => __( 'Add here some code, which will be rendered somewhere', TEXT_DOMAIN ),
-					'id'      => 'linux_tuki_codearea',
-					'default' => '',
-					'type'    => 'textarea_code',
-				],
-			]
-		];
-
 		return $this->option_metabox;
 	}
 

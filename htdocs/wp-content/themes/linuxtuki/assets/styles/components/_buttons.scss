@@ -1,0 +1,3 @@
+.btn-blue {
+  @include button-variant(#FFF, $brand-blue, $brand-blue);
+}

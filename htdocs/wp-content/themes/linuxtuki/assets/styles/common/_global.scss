@@ -25,6 +25,15 @@ html {
 body {
   min-height: 100%;
   font-family: $font-family-helvetica;
+  padding-top: 5.2rem;
+
+  @media screen and (min-width: $screen-sm-min) {
+    padding-top: 8.7rem;
+  }
+
+  @media screen and (min-width: $screen-md-min) {
+    padding-top: 10.9rem;
+  }
 }
 
 img {

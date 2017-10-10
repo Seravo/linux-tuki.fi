@@ -6,17 +6,13 @@ import 'fastclick';
 // import local dependencies
 import Router from './util/router';
 import common from './routes/Common';
-import home from './routes/Home';
 
 /**
  *
  * @type {Router}
  */
 const router = new Router({
-  // All pages
-  common,
-  // Home specific
-  home,
+  common
 });
 
 // Load Events

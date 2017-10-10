@@ -1,0 +1,32 @@
+.hero-area {
+  background-size: cover;
+  background-position: center;
+
+  .hero-area__container {
+    @extend .container;
+
+    .hero-area__row {
+      @extend .row;
+
+      .hero-area__column {
+        @include make-sm-column(10);
+        @include make-sm-column-offset(1);
+        @include make-md-column(8);
+        @include make-md-column-offset(2);
+
+        > h1 {
+          padding: 8rem 0;
+          margin: 0;
+          color: #FFF;
+          text-align: center;
+          font-weight: 500;
+
+          @media screen and (min-width: $screen-sm-min) {
+            font-size: 6rem;
+            padding: 8rem 0 10rem 0;
+          }
+        }
+      }
+    }
+  }
+}
