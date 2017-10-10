@@ -20,7 +20,7 @@
   },
   "config": {
     "port": 3000,
-    "proxyUrl": "https://linuxtuki.local",
+    "proxyUrl": "http://linuxtuki.local",
     "entries": {
       "main": [
         "./assets/scripts/main.js",

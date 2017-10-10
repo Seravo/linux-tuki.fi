@@ -15,7 +15,7 @@ function linux_tuki_main_menu() {
         'container'       => false,
         'container_class' => '',
         'container_id'    => '',
-        'menu_class'      => 'menu',
+        'menu_class'      => 'main-menu',
         'menu_id'         => '',
         'echo'            => true,
         'fallback_cb'     => '',
@@ -24,7 +24,7 @@ function linux_tuki_main_menu() {
         'link_before'     => '',
         'link_after'      => '',
         'items_wrap'      => '%3$s',
-        'depth'           => 4,
+        'depth'           => 2,
         'walker'          => new DigiaWP\WP_navwalker
     ] );
 }
