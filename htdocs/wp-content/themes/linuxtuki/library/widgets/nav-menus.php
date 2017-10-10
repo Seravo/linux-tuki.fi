@@ -25,7 +25,7 @@ function linux_tuki_main_menu() {
         'link_after'      => '',
         'items_wrap'      => '%3$s',
         'depth'           => 2,
-        'walker'          => new DigiaWP\WP_navwalker
+        'walker'          => new WP_Bootstrap_Navwalker
     ] );
 }
 

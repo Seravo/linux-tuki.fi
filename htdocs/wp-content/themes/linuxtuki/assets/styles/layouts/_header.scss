@@ -45,11 +45,7 @@
 
     > li {
 
-      > .dropdown {
-        display: none;
-      }
-
-      &.menu__item--current {
+      &.current-menu-item {
         > a {
           background-color: $brand-blue;
           color: #FFF;
@@ -72,5 +68,22 @@
         }
       }
     }
+  }
+}
+
+.expand-more-icon {
+  @media screen and (min-width: $grid-float-breakpoint) {
+    display: none;
+  }
+
+  &:after {
+    display: inline-block;
+    position: absolute;
+    top: 1rem;
+    right: 2.5rem;
+    content: '\F13A';
+    font-family: fontAwesome;
+    font-size: 1.4rem;
+    color: $brand-blue;
   }
 }
