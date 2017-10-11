@@ -41,6 +41,7 @@
             <div class="navbar-collapse collapse">
                 <ul class="nav navbar-nav navbar-right">
 					<?php linux_tuki_main_menu(); ?>
+                    <?php UTILS()->echo_lang_switcher(); ?>
                 </ul>
             </div>
         </div>
