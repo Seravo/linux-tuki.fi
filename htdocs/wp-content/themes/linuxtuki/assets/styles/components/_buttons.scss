@@ -1,3 +1,19 @@
+button {
+  font-family: $font-familysource-sans;
+
+  &.btn {
+    font-weight: 700;
+  }
+}
+
 .btn-blue {
   @include button-variant(#FFF, $brand-blue, $brand-blue);
+}
+
+.btn-white {
+  @include button-variant($brand-blue, #FFF, #FFF);
+}
+
+.btn-orange {
+  @include button-variant(#FFF, $brand-orange, $brand-orange);
 }

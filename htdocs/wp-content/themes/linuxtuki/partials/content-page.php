@@ -8,8 +8,15 @@
  */
 
 ?>
-
-<article <?php post_class( 'post-container post-' . sanitize_title( get_the_title() ) ); ?>>
-	<h1><?php the_title(); ?></h1>
-	<?php the_content(); ?>
-</article>
+<?php get_template_part( 'partials/content', 'hero' ); ?>
+<main>
+    <div class="main__row">
+        <div class="main__column">
+            <div class="main__column-content">
+                <article>
+                    <?php the_content(); ?>
+                </article>
+            </div>
+        </div>
+    </div>
+</main>

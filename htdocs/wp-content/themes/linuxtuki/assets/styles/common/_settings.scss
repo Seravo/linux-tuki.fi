@@ -38,7 +38,7 @@ $body-bg:               $brand-light-grey !default;
 $text-color:            $gray-dark !default;
 
 //** Global textual link color.
-$link-color:            $brand-primary !default;
+$link-color:            $brand-blue !default;
 //** Link hover color set via `darken()` function.
 $link-hover-color:      darken($link-color, 15%) !default;
 //** Link hover decoration.
@@ -52,6 +52,7 @@ $link-hover-decoration: underline !default;
 $font-family-sans-serif:  "Open sans", Helvetica, Arial, sans-serif !default;
 $font-family-serif:       Georgia, "Times New Roman", Times, serif !default;
 $font-family-helvetica:   "Helvetica Neue", Helvetica, Arial, sans-serif;
+$font-familysource-sans:  'Source Sans Pro', sans-serif;
 //** Default monospace fonts for `<code>`, `<kbd>`, and `<pre>`.
 $font-family-monospace:   Menlo, Monaco, Consolas, "Courier New", monospace !default;
 $font-family-base:        $font-family-sans-serif !default;

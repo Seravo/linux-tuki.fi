@@ -26,6 +26,7 @@ body {
   min-height: 100%;
   font-family: $font-family-helvetica;
   padding-top: 5.2rem;
+  color: $brand-font-color;
 
   @media screen and (min-width: $screen-sm-min) {
     padding-top: 8.7rem;
@@ -61,4 +62,9 @@ img {
     height: 100%;
     border: 0;
   }
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: $font-familysource-sans;
+  font-weight: 700;
 }

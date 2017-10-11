@@ -1,5 +1,5 @@
 .lift-ups {
-  top: -2rem;
+  top: -6rem;
   @include make-sm-column(10);
   @include make-sm-column-offset(1);
   @include make-md-column(8);
@@ -10,17 +10,17 @@
 
     .lift-ups__column {
       @include make-sm-column(6);
+      margin-bottom: 1.5rem;
 
       .lift-ups__column-content {
         padding: 1.5rem;
-        border: 0.1rem solid #CCC;
         border-radius: 0.5rem;
-        background-color: #FFF;
+        background-color: $brand-blue;
         text-align: center;
 
         > h3 {
           text-align: center;
-          color: $brand-blue;
+          color: #FFF;
           @media screen and (min-width: $screen-sm-min){
             min-height: 6rem;
           }
@@ -30,6 +30,26 @@
           display: block;
           margin: 0 auto 2rem auto;
         }
+      }
+    }
+  }
+}
+
+.logos {
+  @extend .container;
+
+  .logos__row {
+    @extend .row;
+
+    .logos__column {
+      @include make-sm-column(12);
+
+      .logos__column-content {
+        background-color: #FFF;
+        padding: 1.5rem;
+        margin: 1.5rem 0;
+        border-radius: 0.5rem;
+        box-shadow: 0.1rem 0.1rem 0.8rem #888888;
       }
     }
   }

@@ -1,0 +1,17 @@
+.logos-row {
+  display: -ms-flexbox;
+  -ms-flex-wrap: wrap;
+  -ms-flex-direction: column;
+  -webkit-flex-flow: row wrap;
+  flex-flow: row wrap;
+  display: -webkit-box;
+  display: flex;
+  text-align: center;
+
+  .logos-row__item {
+    -webkit-box-flex: auto;
+    -ms-flex: auto;
+    flex: auto;
+    padding: 0.5rem;
+  }
+}

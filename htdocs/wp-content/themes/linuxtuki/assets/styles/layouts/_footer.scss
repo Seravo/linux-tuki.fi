@@ -1,0 +1,12 @@
+footer {
+  @extend .container;
+  padding-top: 3rem;
+  padding-bottom: 3rem;
+  font-size: 1.4rem;
+  text-align: center;
+
+  .linux-trademarks {
+    font-size: 1.2rem;
+    font-style: italic;
+  }
+}

@@ -1,0 +1,22 @@
+main {
+  @extend .container;
+
+  .main__row {
+    @extend .row;
+
+    .main__column {
+      top: -6rem;
+      @include make-sm-column(10);
+      @include make-sm-column-offset(1);
+      @include make-md-column(8);
+      @include make-md-column-offset(2);
+
+      .main__column-content {
+        background-color: #FFF;
+        padding: 1.5rem;
+        border-radius: 0.5rem;
+        box-shadow: 0.1rem 0.1rem 0.8rem #888888;
+      }
+    }
+  }
+}

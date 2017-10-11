@@ -257,4 +257,6 @@ if ( function_exists( 'pll_register_string' ) ) {
 	pll_register_string( 'Linux expert at your service', 'Linux expert at your service', TEXT_DOMAIN );
 	pll_register_string( 'Read more', 'Read more', TEXT_DOMAIN );
 	pll_register_string( 'nav tagline', 'nav tagline', TEXT_DOMAIN );
+	pll_register_string( 'Contact information', 'Contact information', TEXT_DOMAIN );
+	pll_register_string( 'Linux trademarks', 'Linux trademarks', TEXT_DOMAIN );
 }
