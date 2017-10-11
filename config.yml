@@ -2,11 +2,11 @@
 # Configuration for Vagrant
 ###
 name: linuxtuki
-#production:
+production:
   # This is used to automatically fetch data from a staging/production environment
-  #domain: example.seravo.com
-  #ssh_port: 12345
-  #url: https://example.seravo.com
+  domain: linux-tuki.fi.seravo.com
+  ssh_port: 10367
+  url: https://linux-tuki.fi.seravo.com
 development:
   # Domains are automatically mapped to Vagrant with /etc/hosts modifications
   domains:
