@@ -2,6 +2,21 @@
   min-width: 100%;
 }
 
+.navlinks {
+  float: right;
+  padding: 1.5rem;
+  color: $brand-nav-font-color;
+  font-size: 1.4rem;
+
+  .navlinks__main-link {
+    color: $brand-orange;
+  }
+
+  .navlinks__lang-link {
+    color: $brand-nav-font-color;
+  }
+}
+
 .nav-logo {
   width: auto;
   height: 4.2rem;
@@ -26,12 +41,17 @@
 }
 
 .nav-logo-tagline {
+  display: none;
   color: $brand-nav-font-color;
   float: left;
   text-transform: uppercase;
   margin-top: 1.2rem;
   line-height: 120%;
   font-size: 1.2rem;
+
+  @media screen and (min-width: $screen-sm-min){
+    display: block;
+  }
 
   @media screen and (min-width: $screen-md-min) {
     margin-top: 3rem;

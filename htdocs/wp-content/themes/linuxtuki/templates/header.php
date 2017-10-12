@@ -32,6 +32,10 @@
                             class="icon-bar"></span> <span class="icon-bar"></span> <span class="icon-bar"></span>
                 </button>
 
+                <div class="navlinks">
+                    <?php echo (pll_current_language() === 'fi') ? '<a href="/etayhteys" class="navlinks__main-link">Etäyhteys</a> |': ''; ?> <?php UTILS()->echo_lang_switcher(); ?>
+                </div>
+
                 <a class="navbar-brand" href="<?php echo home_url( '/' ) ?>">
                     <img alt="Seravo logo" class="nav-logo img-responsive"
                          src="<?php echo UTILS()->get_image_uri() . '/logo.png' ?>"/>
@@ -41,7 +45,6 @@
             <div class="navbar-collapse collapse">
                 <ul class="nav navbar-nav navbar-right">
 					<?php linux_tuki_main_menu(); ?>
-					<?php UTILS()->echo_lang_switcher(); ?>
                 </ul>
             </div>
         </div>

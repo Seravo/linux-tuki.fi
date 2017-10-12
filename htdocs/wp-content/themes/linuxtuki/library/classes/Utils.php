@@ -246,24 +246,15 @@ class Utils {
 	 */
 	public function echo_lang_switcher() {
 		$currentLang = pll_current_language();
-		?>
-        <li class="menu-item menu-item-has-children dropdown">
-            <a href="#" class="dropdown-toggle" aria-haspopup="true"><?php echo strtoupper( $currentLang ) ?></a> <span
-                    class="expand-more-icon"></span>
-            <ul role="menu" class="dropdown-menu">
-				<?php
-				$translations = pll_the_languages( [ 'raw' => 1 ] );
 
-				foreach ( $translations as $translation ) {
-					if ( $translation['slug'] === $currentLang ) {
-						continue;
-					}
+		$translations = pll_the_languages( [ 'raw' => 1 ] );
 
-					echo '<li class="menu-item"><a href="' . $translation['url'] . '">' . strtoupper( $translation['slug'] ) . '</a></li>';
-				}
-				?>
-            </ul>
-        </li>
-		<?php
+		foreach ( $translations as $translation ) {
+			if ( $translation['slug'] === $currentLang ) {
+				continue;
+			}
+
+			echo '<a class="navlinks__lang-link" href="' . $translation['url'] . '">' . strtoupper( $translation['slug'] ) . '</a> ';
+		}
 	}
 }
