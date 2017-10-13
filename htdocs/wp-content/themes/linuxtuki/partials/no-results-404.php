@@ -9,8 +9,17 @@
 
 ?>
 
-<article>
-	<?php _e( 'Error 404: Page not found', TEXT_DOMAIN ); ?>
-	<?php _e( 'It seems we can&rsquo;t find what you&rsquo;re looking for. Perhaps searching can help.', TEXT_DOMAIN ); ?>
-	<?php get_search_form(); ?>
-</article>
+<?php get_template_part( 'partials/content', 'hero' ); ?>
+<main>
+    <div class="main__row">
+        <div class="main__column">
+            <div class="main__column-content">
+                <article>
+					<p>
+                        <?php pll_e('404 error message') ?>
+                    </p>
+                </article>
+            </div>
+        </div>
+    </div>
+</main>

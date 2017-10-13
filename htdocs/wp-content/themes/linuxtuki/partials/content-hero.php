@@ -4,13 +4,15 @@
         <div class="hero-area__row">
             <div class="hero-area__column">
                 <h1>
-		            <?php
-		            if(is_front_page()) {
-			            pll_e( 'Linux expert at your service' );
-		            } else {
-			            the_title();
-		            }
-		            ?>
+					<?php
+					if ( is_front_page() ) {
+						pll_e( 'Linux expert at your service' );
+					} elseif ( is_404() ) {
+						pll_e( '404 error title' );
+					} else {
+						the_title();
+					}
+					?>
                 </h1>
             </div>
         </div>
