@@ -15,8 +15,8 @@
         <div class="main__column">
             <div class="main__column-content">
                 <article>
-					<p>
-                        <?php pll_e('404 error message') ?>
+                    <p>
+						<?php pll_e( '404 error message' ) ?>
                     </p>
                 </article>
             </div>

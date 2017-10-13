@@ -259,4 +259,6 @@ if ( function_exists( 'pll_register_string' ) ) {
 	pll_register_string( 'nav tagline', 'nav tagline', TEXT_DOMAIN );
 	pll_register_string( 'Contact information', 'Contact information', TEXT_DOMAIN );
 	pll_register_string( 'Linux trademarks', 'Linux trademarks', TEXT_DOMAIN );
+	pll_register_string( '404 error title', '404 error title', TEXT_DOMAIN );
+	pll_register_string( '404 error message', '404 error message', TEXT_DOMAIN );
 }
