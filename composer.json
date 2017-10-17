@@ -64,7 +64,8 @@
     "wpackagist-plugin/autodescription": "~2",
     "wpackagist-plugin/cmb2": "~2",
     "wpackagist-plugin/regenerate-thumbnails": "~2",
-    "wpackagist-plugin/responsive-video-embed": "~0.3"
+    "wpackagist-plugin/responsive-video-embed": "~0.3",
+    "wpackagist-plugin/redirection": "~2"
   },
   "extra": {
     "installer-paths": {
