@@ -35,6 +35,9 @@ before_script:
   - curl -O https://raw.githubusercontent.com/wp-cli/builds/gh-pages/phar/wp-cli.phar
   - php wp-cli.phar core install --url=$WP_TEST_URL --title='Test' --admin_user=$WP_TEST_USER --admin_password=$WP_TEST_USER_PASS --admin_email="$WP_TEST_USER@wordpress.dev" --path=htdocs/wordpress
 
+  # Activate linuxtuki theme to see something else than just a blank screen
+  - php wp-cli.phar theme activate linuxtuki --path=htdocs/wordpress
+
   # Activate all plugins
   - php wp-cli.phar plugin activate --all --path=htdocs/wordpress
 
@@ -43,7 +46,7 @@ before_script:
 
   # Install packages for gulp
   - npm install
-  
+
   # Test gulp and compile assets
   - ./node_modules/.bin/gulp
 
