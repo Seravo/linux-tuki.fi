@@ -30,7 +30,7 @@ $downloadItems = get_post_meta( get_the_ID(), '_linuxtuki_downloads', true );
                                         </a>
                                     </h4>
                                 </div>
-                                <div id="downloads" class="panel-collapse collapse" role="tabpanel"
+                                <div id="downloads" class="panel-collapse collapse in" role="tabpanel"
                                      aria-labelledby="headingOne">
                                     <div class="panel-body">
 										<?php echo $postMeta['_linuxtuki_downloads_text'][0] ?>
