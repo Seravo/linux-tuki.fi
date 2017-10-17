@@ -1,28 +1,21 @@
 {
-  "name": "seravo/wordpress",
+  "name": "seravo/linux-tuki.fi",
   "type": "project",
   "license": "MIT",
-  "description": "Seravo WordPress instance template",
-  "homepage": "https://seravo.com/",
+  "description": "Linux-tuki.fi website",
+  "homepage": "https://linux-tuki.fi/",
   "authors": [
     {
-      "name": "Antti Kuosmanen",
-      "email": "antti@seravo.fi",
-      "homepage": "https://github.com/anttiviljami"
+      "name": "Timo Leppänen"
     },
     {
       "name": "Otto Kekäläinen",
       "email": "otto@seravo.fi",
       "homepage": "https://github.com/ottok"
-    },
-    {
-      "name": "Onni Hakala",
-      "email": "onni@seravo.fi",
-      "homepage": "https://github.com/onnimonni"
     }
   ],
   "keywords": [
-    "wordpress", "composer", "wp", "wp-palvelu", "seravo"
+    "wordpress", "composer", "seravo", "linux-tuki"
   ],
   "config": {
     "preferred-install": "dist"
@@ -58,12 +51,10 @@
     "koodimonni-language/fi": "*",
     "koodimonni-language/sv_SE": "*",
     "seravo/seravo-plugin": ">=1.4.0",
-    "wpackagist-plugin/auto-post-thumbnail": "*",
     "wpackagist-plugin/google-analytics-dashboard-for-wp": "*",
     "wpackagist-plugin/polylang": "~2",
     "wpackagist-plugin/autodescription": "~2",
     "wpackagist-plugin/cmb2": "~2",
-    "wpackagist-plugin/regenerate-thumbnails": "~2",
     "wpackagist-plugin/responsive-video-embed": "~0.3",
     "wpackagist-plugin/redirection": "~2"
   },

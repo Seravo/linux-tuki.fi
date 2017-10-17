@@ -21,7 +21,7 @@ htdocs/wp-content/mu-plugins/*
 !htdocs/wp-content/mu-plugins/.gitkeep
 !htdocs/wp-content/mu-plugins/register-theme-directory.php
 !htdocs/wp-content/mu-plugins/bedrock-autoloader.php
-htdocs/wp-content/themes/twenty*
+htdocs/wp-content/themes/linuxtuki
 !htdocs/wp-content/themes/.gitkeep
 htdocs/wp-content/languages/*
 !htdocs/wp-content/languages/.gitkeep
@@ -51,3 +51,6 @@ myrecording
 # OSX Desktop Services Store files.
 .DS_Store
 .idea
+
+# Binary files section of site not part of the WordPress project
+htdocs/repo/

@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "content-hash": "cbbb916d7a55201023bb9af3a3618d3a",
+    "content-hash": "7350396d5a6e5e3265a979852dfe97f2",
     "packages": [
         {
             "name": "composer/installers",
@@ -846,26 +846,6 @@
             "time": "2014-10-16T14:50:21+00:00"
         },
         {
-            "name": "wpackagist-plugin/auto-post-thumbnail",
-            "version": "3.4.1",
-            "source": {
-                "type": "svn",
-                "url": "https://plugins.svn.wordpress.org/auto-post-thumbnail/",
-                "reference": "tags/3.4.1"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://downloads.wordpress.org/plugin/auto-post-thumbnail.3.4.1.zip",
-                "reference": null,
-                "shasum": null
-            },
-            "require": {
-                "composer/installers": "~1.0"
-            },
-            "type": "wordpress-plugin",
-            "homepage": "https://wordpress.org/plugins/auto-post-thumbnail/"
-        },
-        {
             "name": "wpackagist-plugin/autodescription",
             "version": "2.9.4",
             "source": {
@@ -964,26 +944,6 @@
             },
             "type": "wordpress-plugin",
             "homepage": "https://wordpress.org/plugins/redirection/"
-        },
-        {
-            "name": "wpackagist-plugin/regenerate-thumbnails",
-            "version": "2.3.1",
-            "source": {
-                "type": "svn",
-                "url": "https://plugins.svn.wordpress.org/regenerate-thumbnails/",
-                "reference": "tags/2.3.1"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://downloads.wordpress.org/plugin/regenerate-thumbnails.2.3.1.zip",
-                "reference": null,
-                "shasum": null
-            },
-            "require": {
-                "composer/installers": "~1.0"
-            },
-            "type": "wordpress-plugin",
-            "homepage": "https://wordpress.org/plugins/regenerate-thumbnails/"
         },
         {
             "name": "wpackagist-plugin/responsive-video-embed",
