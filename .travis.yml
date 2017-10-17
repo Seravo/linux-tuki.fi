@@ -38,6 +38,9 @@ before_script:
   # Activate linuxtuki theme to see something else than just a blank screen
   - php wp-cli.phar theme activate linuxtuki --path=htdocs/wordpress
 
+  # Import basic Polylang settings so that the main page can load
+  - php wp-cli.phar db import --path=htdocs/wordpress polylang-activation.sql
+
   # Activate all plugins
   - php wp-cli.phar plugin activate --all --path=htdocs/wordpress
 

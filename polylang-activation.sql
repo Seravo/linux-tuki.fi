@@ -1,0 +1,14 @@
+INSERT INTO `wp_options` VALUES (300,'polylang','a:13:{s:7:\"browser\";i:1;s:7:\"rewrite\";i:1;s:12:\"hide_default\";i:1;s:10:\"force_lang\";i:1;s:13:\"redirect_lang\";i:0;s:13:\"media_support\";i:1;s:9:\"uninstall\";i:0;s:4:\"sync\";a:0:{}s:10:\"post_types\";a:0:{}s:10:\"taxonomies\";a:0:{}s:7:\"domains\";a:0:{}s:7:\"version\";s:5:\"2.2.3\";s:12:\"default_lang\";s:2:\"fi\";}','yes');
+INSERT INTO `wp_options` VALUES (307,'category_children','a:0:{}','yes');
+INSERT INTO `wp_postmeta` VALUES (2,3,'_pll_strings_translations','a:0:{}');
+INSERT INTO `wp_posts` VALUES (3,1,'2017-10-18 01:28:07','2017-10-17 22:28:07','','polylang_mo_2','','private','closed','closed','','polylang_mo_2','','','2017-10-18 01:28:07','2017-10-17 22:28:07','',0,'https://linux-tuki.local/?post_type=polylang_mo&p=3',0,'polylang_mo','',0);
+INSERT INTO `wp_term_relationships` VALUES (4,3,0);
+INSERT INTO `wp_term_relationships` VALUES (4,5,0);
+INSERT INTO `wp_term_taxonomy` VALUES (2,2,'language','a:3:{s:6:\"locale\";s:2:\"fi\";s:3:\"rtl\";i:0;s:9:\"flag_code\";s:2:\"fi\";}',0,0);
+INSERT INTO `wp_term_taxonomy` VALUES (3,3,'term_language','',0,1);
+INSERT INTO `wp_term_taxonomy` VALUES (4,4,'category','',0,0);
+INSERT INTO `wp_term_taxonomy` VALUES (5,5,'term_translations','a:1:{s:2:\"fi\";i:4;}',0,1);
+INSERT INTO `wp_terms` VALUES (2,'Suomi','fi',0);
+INSERT INTO `wp_terms` VALUES (3,'Suomi','pll_fi',0);
+INSERT INTO `wp_terms` VALUES (4,'Yleinen','yleinen-fi',0);
+INSERT INTO `wp_terms` VALUES (5,'pll_59e683f7cb28b','pll_59e683f7cb28b',0);
