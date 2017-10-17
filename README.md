@@ -86,3 +86,18 @@ MariaDB (MySQL):
 user:     root
 password: root
 ```
+
+## Vagrant base database
+
+This project includes `vagrant-base.sql` as a base template for the database. It is stripped down and cleaned up version of an early Linux-tuki.fi production database.
+
+Cleanup commands used among others:
+```
+sed "/'auto-draft'/d" -i vagrant-base.sql
+sed "/'revision'/d" -i vagrant-base.sql
+sed '/_edit_last/d' -i vagrant-base.sql
+sed '/_edit_lock/d' -i vagrant-base.sql
+sed -r '/INSERT INTO `wp_options` VALUES \([0-9]+,'\''_transient_/d' -i vagrant-base.sql
+```
+
+Also remember to replace all real users with the vagrant dummy user, and clean away production key (nonce, secure_auth, logged_in) material, like the session keys or GAWDP authentication keys.
