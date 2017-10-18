@@ -7,6 +7,10 @@ Using project template by [Seravo.com](https://seravo.com).
 
 Please see the documentation at https://seravo.com/docs/ for more info.
 
+When you have Vagrant up and running successfully you should see a site looking something like this:
+
+![https://linux-tuki.local](screenshot.png?raw=true)
+
 ## Installation
 
 ### MacOS
@@ -73,7 +77,6 @@ In theory, Seravo WordPress should work even without cygwin installed, but we st
 # Answer (y/n) for interactive installation script
 ```
 
-
 ### All platforms
 
 Once you have Vagrant up and running, you need to manually build assets with:
@@ -81,7 +84,7 @@ Once you have Vagrant up and running, you need to manually build assets with:
 # Enter Vagrant
 vagrant ssh
 # Change to theme directory
-/data/wordpress/htdocs/wp-content/themes/linuxtuki
+cd /data/wordpress/htdocs/wp-content/themes/linuxtuki
 # Install Node.js dependencies
 yarn
 # Build assets
