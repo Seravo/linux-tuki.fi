@@ -56,7 +56,8 @@
     "wpackagist-plugin/autodescription": "~2",
     "wpackagist-plugin/cmb2": "~2",
     "wpackagist-plugin/responsive-video-embed": "~0.3",
-    "wpackagist-plugin/redirection": "~2"
+    "wpackagist-plugin/redirection": "~2",
+    "aucor/dynamic-mo-loader": "^1.1"
   },
   "extra": {
     "installer-paths": {

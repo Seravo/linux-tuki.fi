@@ -4,8 +4,41 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "content-hash": "7350396d5a6e5e3265a979852dfe97f2",
+    "content-hash": "2b0d200332cd3cd0e9e1f65cbc8804c0",
     "packages": [
+        {
+            "name": "aucor/dynamic-mo-loader",
+            "version": "1.1.1",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/aucor/dynamic-mo-loader.git",
+                "reference": "6b192ddae68664b9ec8cbb018cd2227db88ac5d1"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/aucor/dynamic-mo-loader/zipball/6b192ddae68664b9ec8cbb018cd2227db88ac5d1",
+                "reference": "6b192ddae68664b9ec8cbb018cd2227db88ac5d1",
+                "shasum": ""
+            },
+            "type": "wordpress-muplugin",
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "GPL-2.0+"
+            ],
+            "authors": [
+                {
+                    "name": "Janne Ala-Äijälä",
+                    "email": "j2@aucor.fi"
+                },
+                {
+                    "name": "Björn Ahrens",
+                    "email": "bjoern@ahrens.net"
+                }
+            ],
+            "description": "Better text domain loading with object cache support for WordPress",
+            "homepage": "https://github.com/aucor/dynamic-mo-loader",
+            "time": "2016-10-31T07:05:24+00:00"
+        },
         {
             "name": "composer/installers",
             "version": "v1.0.12",
