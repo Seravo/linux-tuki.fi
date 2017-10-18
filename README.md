@@ -73,6 +73,23 @@ In theory, Seravo WordPress should work even without cygwin installed, but we st
 # Answer (y/n) for interactive installation script
 ```
 
+
+### All platforms
+
+Once you have Vagrant up and running, you need to manually build assets with:
+```
+# Enter Vagrant
+vagrant ssh
+# Change to theme directory
+/data/wordpress/htdocs/wp-content/themes/linuxtuki
+# Install Node.js dependencies
+yarn
+# Build assets
+webpack --config assets/webpack/production.js --progress
+```
+
+@TODO: The current contents of project package.json and theme package.json does not yet match the actual Node.js dependencies this project has or what it needs to build.
+
 ### Credentials for vagrant
 
 WordPress:
