@@ -1,0 +1,38 @@
+#!/bin/bash
+##
+# This is run after successful push to this repo
+# Useful for automating grunt work using local development
+##
+
+##
+# This script can be called from anywhere so it's good to be in the correct location
+# This can also be called in .git/hooks dir and we need to get into project root
+##
+cd "$( dirname "${BASH_SOURCE[0]}" )"/../..
+
+# Hack: Somehow this script won't understand that git is in current directory
+GIT_DIR="$(pwd)/.git"
+
+# Loop through all changed files
+changed_files=$(git diff --name-only --diff-filter=ACM HEAD HEAD^)
+
+# Check files which have triggers
+while read -r line; do
+    if [ "$line" = "composer.json" ] || [ "$line" = "composer.lock" ]; then
+      COMPOSER_CHANGED=true
+    elif [ "$line" = "nginx/*.conf" ]; then
+      NGINX_CHANGED=true
+    fi
+done <<< "$changed_files"
+
+# Do stuff with the triggers
+if $COMPOSER_CHANGED; then
+  echo "Seravo: composer.json was updated, installing..."
+  composer install --no-dev
+fi
+
+if $NGINX_CHANGED; then
+  echo "Seravo: Nginx configs were changed, reloading nginx..."
+  wp-restart-nginx
+fi
+
