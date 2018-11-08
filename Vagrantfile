@@ -52,7 +52,7 @@ Vagrant.configure('2') do |config|
   config.vm.box_version = ">= 20160718.15.0122"
 
   # Use precompiled box
-  config.vm.box = 'seravo/wordpress'
+  config.vm.box = 'seravo/wordpress-beta'
 
   # Use the name of the box as the hostname
   config.vm.hostname = site_config['name']
