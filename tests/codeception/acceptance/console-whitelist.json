@@ -1,0 +1,12 @@
+[
+	{
+		"level": "WARNING",
+		"message": ".* Failed to decode downloaded font: .*",
+		"regex": true
+	},
+  {
+		"level": "WARNING",
+		"message": ".* OTS parsing error: invalid version tag",
+    "regex": true
+	}
+]
