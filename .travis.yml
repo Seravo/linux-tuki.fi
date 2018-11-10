@@ -19,44 +19,35 @@ matrix:
   allow_failures:
     - php: nightly
 
-before_install:
-  - rvm install 2.2.5
+cache:
+  directories:
+    - vendor
+    - $HOME/.composer/cache
 
+# Any failures in this step will be emitted by travis as 'failed'
 before_script:
   # Install composer packages before trying to activate themes or plugins
   - composer install
   # Create database
   - mysqladmin create $DB_NAME --user="$DB_USER" --password="$DB_PASSWORD"
-  # Install router so that we don't need nginx/php-fpm
-  - curl -s https://raw.githubusercontent.com/Seravo/wordpress-test-template/master/lib/router.php > htdocs/router.php
-  # Start php server on background
-  - cd htdocs && php -S 0.0.0.0:12000 router.php &
   # Install WordPress with wp-cli
-  - curl -O https://raw.githubusercontent.com/wp-cli/builds/gh-pages/phar/wp-cli.phar
+  - curl -fSLO https://raw.githubusercontent.com/wp-cli/builds/gh-pages/phar/wp-cli.phar
   - php wp-cli.phar core install --url=$WP_TEST_URL --title='Test' --admin_user=$WP_TEST_USER --admin_password=$WP_TEST_USER_PASS --admin_email="$WP_TEST_USER@wordpress.dev" --path=htdocs/wordpress
-
   # Activate linuxtuki theme to see something else than just a blank screen
   - php wp-cli.phar theme activate linuxtuki --path=htdocs/wordpress
-
   # Import basic Polylang settings so that the main page can load
   - php wp-cli.phar db import --path=htdocs/wordpress polylang-activation.sql
-
   # Activate all plugins
   - php wp-cli.phar plugin activate --all --path=htdocs/wordpress
+  # Start a local server so we don't need all of Nginx/PHP-FPM
+  - php wp-cli.phar server --port=12000 --docroot=htdocs &
+  # Wait a bit for web server to start and test that it runs
+  - sleep 3; curl -i http://localhost:12000
+  # Install Codeception
+  - curl -fSLO https://codeception.com/codecept.phar
+#  - php codecept.phar build --config=/usr/share/seravo/tests/codeception/seravo.yml
 
-  # test webserver
-  - curl -i http://localhost:12000
-
-  # Install packages for gulp
-  - npm install
-
-  # Test gulp and compile assets
-  - ./node_modules/.bin/gulp
-
-  # Install gems for rspec tests
-  - gem install bundler
-  - bundle install --gemfile=tests/rspec/Gemfile
-
-
+# Any failures in this step will be emitted by travis as 'errored'
 script:
-  - cd tests/rspec && bundle exec rspec *.rb
+  - find -name '*.php' -exec php -d error_reporting=32767 -l {} \;
+#  - php codecept.phar run /usr/share/seravo/tests/codeception/seravo.yml --config=/usr/share/seravo/tests/codeception/seravo.yml
