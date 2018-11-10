@@ -65,7 +65,7 @@ add_action( 'wp_head', function () {
 
 	echo <<<EOT
 	\n
-	
+
 	<link rel="icon" type="image/png" sizes="192x192" href="{$imageUri}/icons/android-chrome-192x192.png">
     <link rel="manifest" href="{$imageUri}/icons/manifest.json">
     <meta name="mobile-web-app-capable" content="yes">
@@ -87,16 +87,14 @@ add_action( 'wp_head', function () {
     <link rel="icon" type="image/png" sizes="228x228" href="{$imageUri}/icons/coast-228x228.png">
     <link rel="icon" type="image/png" sizes="16x16" href="{$imageUri}/icons/favicon-16x16.png">
     <link rel="icon" type="image/png" sizes="32x32" href="{$imageUri}/icons/favicon-32x32.png">
-    <link rel="icon" type="image/png" sizes="96x96" href="{$imageUri}/icons/favicon-96x96.png">
-    <link rel="icon" type="image/png" sizes="230x230" href="{$imageUri}/icons/favicon-230x230.png">
-    
+
     <link rel="shortcut icon" href="{$imageUri}/icons/favicon.ico">
     <link rel="yandex-tableau-widget" href="{$imageUri}/icons/yandex-browser-manifest.json">
-    
+
     <meta name="msapplication-TileColor" content="#ffffff">
     <meta name="msapplication-TileImage" content="{$imageUri}/icons/mstile-144x144.png">
     <meta name="msapplication-config" content="{$imageUri}/icons/browserconfig.xml">
-	
+
 	<link rel="manifest" href="{$imageUri}/icons/manifest.webapp">
     <link rel="manifest" href="{$imageUri}/icons/manifest.json">
 	\n
