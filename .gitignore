@@ -56,3 +56,6 @@ myrecording
 htdocs/repo/
 htdocs/esiasennetut/
 htdocs/graafinen_ilme/
+
+# No point in lock files for a project in production
+composer.lock
