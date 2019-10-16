@@ -19,8 +19,8 @@ $webroot_dir = $root_dir . '/htdocs';
  * .env file is also heavily used in development
  */
 if (file_exists($root_dir . '/.env')) {
-  Dotenv::makeMutable();
-  Dotenv::load($root_dir);
+  $dotenv = new Dotenv\Dotenv($root_dir);
+  $dotenv->overload();
 }
 
 
@@ -31,10 +31,9 @@ if (file_exists($root_dir . '/.env')) {
 define('DB_NAME', getenv('DB_NAME'));
 define('DB_USER', getenv('DB_USER'));
 define('DB_PASSWORD', getenv('DB_PASSWORD'));
-define('DB_PORT', getenv('DB_PORT') ? getenv('DB_PORT') : 3306 );
-define('DB_HOST', getenv('DB_HOST') ? getenv('DB_HOST') . ':' . DB_PORT : '127.0.0.1:3306' );
-define('DB_CHARSET', 'utf8');
-define('DB_COLLATE', '');
+define('DB_HOST', getenv('DB_HOST') ? getenv('DB_HOST') : '127.0.0.1:3306' );
+define('DB_CHARSET', getenv('DB_CHARSET') ? getenv('DB_CHARSET') : 'utf8mb4' );
+define('DB_COLLATE', getenv('DB_COLLATE') ? getenv('DB_COLLATE') : 'utf8mb4_swedish_ci' );
 $table_prefix = getenv('DB_PREFIX') ? getenv('DB_PREFIX') : 'wp_';
 
 /**
@@ -45,7 +44,7 @@ define('WP_CONTENT_DIR', $webroot_dir . CONTENT_DIR);
 
 // WP_CONTENT_URL can be set to enable relative URLs to /wp-content
 // but if undefined, it simply defaults to absolute URLs.
-define('WP_CONTENT_URL', CONTENT_DIR);
+// define('WP_CONTENT_URL', CONTENT_DIR);
 
 /**
  * Don't allow any other write method than direct
@@ -99,10 +98,12 @@ define( 'COOKIEHASH', getenv('CONTAINER') );
 if ( 'production' === getenv('WP_ENV') ) {
   define('WP_DEBUG', false);
   define('WP_DEBUG_DISPLAY', false);
+  define('WP_DEBUG_LOG', false);
   define('SCRIPT_DEBUG', false);
 } else {
   define('WP_DEBUG', true);
   define('WP_DEBUG_DISPLAY', true);
+  define('WP_DEBUG_LOG', '/data/log/wp-debug.log');
   define('SCRIPT_DEBUG', true);
 
   // Disable wp-content/object-cache.php from being active during development

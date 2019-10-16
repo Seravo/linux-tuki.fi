@@ -41,7 +41,8 @@ else
 end
 
 # Multiple public_network mappings need at least 1.7.4
-Vagrant.require_version '>= 1.7.4'
+# Custom triggers stop working in 2.1.0 so that is max for now
+Vagrant.require_version '>= 1.7.4', '< 2.1.0'
 
 Vagrant.configure('2') do |config|
 
@@ -49,7 +50,7 @@ Vagrant.configure('2') do |config|
   config.ssh.forward_agent = true
 
   # Minimum box version requirement for this Vagrantfile revision
-  config.vm.box_version = ">= 20160718.15.0122"
+  config.vm.box_version = ">= 20190513.0.0"
 
   # Use precompiled box
   config.vm.box = 'seravo/wordpress'
@@ -92,7 +93,7 @@ Vagrant.configure('2') do |config|
 
   # Sync the folders
   # We have tried using NFS but it's super slow compared to synced_folder
-  config.vm.synced_folder DIR, '/data/wordpress/', owner: 'vagrant', group: 'vagrant', mount_options: ['dmode=776', 'fmode=775']
+  config.vm.synced_folder DIR, '/data/wordpress/', owner: 'vagrant', group: 'vagrant', mount_options: ['dmode=775', 'fmode=775']
 
 
   # For Self-signed ssl-certificate
@@ -105,11 +106,6 @@ Vagrant.configure('2') do |config|
   if File.exists? File.join(Dir.home, ".ssh", "id_rsa.pub")
     id_rsa_ssh_key_pub = File.read(File.join(Dir.home, ".ssh", "id_rsa.pub"))
     config.vm.provision :shell, :inline => "echo '#{id_rsa_ssh_key_pub }' >> /home/vagrant/.ssh/authorized_keys && chmod 600 /home/vagrant/.ssh/authorized_keys"
-  end
-
-  # Do vagrant specific scripts here
-  unless site_config['name'].nil?
-    config.vm.provision :shell, :inline => "sudo wp-vagrant-activation"
   end
 
   # Some useful triggers for better workflow
@@ -127,13 +123,24 @@ Vagrant.configure('2') do |config|
         run_remote "composer install --working-dir=/data/wordpress"
       end
 
+      # Sync plugin files from production is so configured to do
+      if site_config['production'] != nil && site_config['production']['ssh_port'] != nil and site_config['development']['pull_production_plugins'] == 'always'
+        run_remote("wp-pull-production-plugins")
+      end
+
+      # Sync theme files from production is so configured to do
+      if site_config['production'] != nil && site_config['production']['ssh_port'] != nil and site_config['development']['pull_production_themes'] == 'always'
+        run_remote("wp-pull-production-themes")
+      end
+
       # Database imports
-      if site_config['production'] != nil && site_config['production']['ssh_port'] != nil and confirm("Pull database from production?",false)
+      if site_config['production'] != nil && site_config['production']['ssh_port'] != nil && site_config['development']['pull_production_db'] != 'never' && (site_config['development']['pull_production_db'] == 'always' or confirm("Pull database from production?", false))
         # Seravo customers are asked if they want to pull the production database here
 
-        # Install WordPress with defaults first
+        # Install WordPress with defaults first so the database is not empty. Will automatically skip if WP was already installed.
         run_remote("wp core install --url=https://#{site_config['name']}.local --title=#{site_config['name'].capitalize}\
          --admin_email=vagrant@#{site_config['name']}.local --admin_user=vagrant --admin_password=vagrant")
+        # Pull production DB
         run_remote("wp-pull-production-db")
       elsif File.exists?(File.join(DIR,'.vagrant','shutdown-dump.sql'))
         # Return the state where we last left if WordPress isn't currently installed
@@ -148,28 +155,9 @@ Vagrant.configure('2') do |config|
         notice "Installed default WordPress with user:vagrant password:vagrant"
       end
 
-      # Init git if it doesn't exist
-      if not File.exists?( File.join(DIR,".git") ) and confirm "There's no git repository. Should we create one?"
-        system "git init ."
-      end
-
-      # Activate githooks for testing, etc...
-      git_hooks_dir = File.join(DIR,".git","hooks")
-      unless ( Vagrant::Util::Platform.windows? or File.exists?(File.join(git_hooks_dir,'.activated')) )
-        if confirm "Activate git hooks in scripts/hooks?"
-          # symlink git on remote
-          run_remote "wp-activate-git-hooks"
-
-          # create hook folder (if not exists) and symlink git on host machine
-          Dir.mkdir git_hooks_dir unless File.exists? git_hooks_dir
-          Dir.chdir git_hooks_dir
-
-          # Symlink all files from scripts to here
-          system "ln -sf ../../scripts/hooks/* ."
-          FileUtils.chmod_R(0755,File.join(DIR,'scripts','hooks'))
-          # Touch .activated file so that we don't have to do this again
-          touch_file( File.join(git_hooks_dir,'.activated'))
-        end
+      # Don't activate git hooks, just notify them
+      if File.exists?( File.join(DIR,'.git', 'hooks', 'pre-commit') )
+        puts "If you want to use a git pre-commit hook please run 'wp-activate-git-hooks' inside the Vagrant box."
       end
 
       case RbConfig::CONFIG['host_os']
@@ -179,7 +167,7 @@ Vagrant.configure('2') do |config|
         # Trust the self-signed cert in keychain
         unless File.exists?(File.join(ssl_cert_path,'trust.lock'))
           if File.exists?(File.join(ssl_cert_path,'development.crt')) and confirm "Trust the generated ssl-certificate in OS-X keychain?"
-            system "sudo security add-trusted-cert -d -r trustRoot -k '/Library/Keychains/System.keychain' #{ssl_cert_path}/development.crt"
+            system "sudo security add-trusted-cert -d -r trustRoot -k '/Library/Keychains/System.keychain' '#{ssl_cert_path}/development.crt'"
             # Write lock file so we can remove it too
             touch_file File.join(ssl_cert_path,'trust.lock')
           end
@@ -189,10 +177,10 @@ Vagrant.configure('2') do |config|
       end
 
       # Attempt to use the asset proxy for production url defined in config.yml
-      run_remote "wp-use-asset-proxy &> /dev/null"
+      run_remote "wp-use-asset-proxy"
 
       # Restart nginx because the file system might not have been ready when the certificate was created
-      run_remote "wp-restart-nginx &> /dev/null"
+      run_remote "wp-restart-nginx"
 
       # Run 'vagrant up' customizer script if it exists
       if File.exist?(File.join(DIR, 'vagrant-up-customizer.sh'))
@@ -225,7 +213,7 @@ Vagrant.configure('2') do |config|
   config.vm.provider 'virtualbox' do |vb|
     # Give VM access to all cpu cores on the host
     cpus = case RbConfig::CONFIG['host_os']
-      when /darwin/ then `sysctl -n hw.ncpu`.to_i
+      when /darwin/ then `sysctl -n hw.physicalcpu`.to_i
       when /linux/ then `nproc`.to_i
       else 2
     end
