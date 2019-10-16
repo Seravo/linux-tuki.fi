@@ -16,3 +16,6 @@ bower_components
 
 # log-files
 *.log
+
+# Yarn
+yarn.lock
